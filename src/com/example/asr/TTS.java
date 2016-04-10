@@ -1,6 +1,10 @@
 package com.example.asr;
 
+import java.util.HashMap;
 import java.util.Locale;
+
+import org.w3c.dom.ls.LSInput;
+
 import android.content.Context;
 import android.speech.tts.*;
 import android.speech.tts.TextToSpeech.OnInitListener;
@@ -8,25 +12,25 @@ import android.speech.tts.TextToSpeech.OnUtteranceCompletedListener;
 import android.util.Log;
 
 
-public class TTS implements OnInitListener,OnUtteranceCompletedListener{
+public class TTS extends UtteranceProgressListener implements OnInitListener{
 	
 
 	private TextToSpeech myTTS;		
 	private static TTS singleton;	
 	
 	private static final String LOGTAG = "TTS";
-	private TTS.OnUtteranceCompletedListener listener;
+	private UtteranceFinishedListener listener;
 	
 	
-	private TTS(Context ctx) {
+	private TTS(Context ctx, UtteranceFinishedListener listener) {
 			myTTS = new TextToSpeech(ctx,(OnInitListener) this);
-		this.listener=(OnUtteranceCompletedListener) ctx;
+		this.listener=listener;
 	}
 
 	
-	public static TTS getInstance(Context ctx){
+	public static TTS getInstance(Context ctx,UtteranceFinishedListener listener){
 		if(singleton==null){
-			singleton = new TTS(ctx);
+			singleton = new TTS(ctx,listener);
 		}
 		
 		return singleton;
@@ -81,19 +85,26 @@ public class TTS implements OnInitListener,OnUtteranceCompletedListener{
 	
 	public void speak(String text, String languageCode, String countryCode) throws Exception{
 		setLocale(languageCode, countryCode);
-		myTTS.speak(text, TextToSpeech.QUEUE_ADD, null); 		
+		HashMap<String,String> map=new HashMap<String, String>();
+		map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "121");
+		myTTS.speak(text, TextToSpeech.QUEUE_FLUSH, map);  		
 	}
 	
 	
 	public void speak(String text, String languageCode) throws Exception{
 		setLocale(languageCode);
-		myTTS.speak(text, TextToSpeech.QUEUE_ADD, null); 		
+		HashMap<String,String> map=new HashMap<String, String>();
+		map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "121");
+		myTTS.speak(text, TextToSpeech.QUEUE_FLUSH, map); 
+		//myTTS.speak(text, TextToSpeech.QUEUE_ADD, null); 		
 	}
 	
 	
 	public void speak(String text){
 		setLocale();
-		myTTS.speak(text, TextToSpeech.QUEUE_ADD, null); 		
+		HashMap<String,String> map=new HashMap<String, String>();
+		map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "121");
+		myTTS.speak(text, TextToSpeech.QUEUE_FLUSH, map); 		
 	}
 	
 	
@@ -110,32 +121,50 @@ public class TTS implements OnInitListener,OnUtteranceCompletedListener{
 	}
 	
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onInit(int status) {
 		if(status != TextToSpeech.ERROR){
 			setLocale();
+			 myTTS.setOnUtteranceProgressListener(this);
 	    }
 		else
 		{
 			Log.e(LOGTAG, "Error creating the TTS");
 		}
-		if(status == TextToSpeech.SUCCESS) {
-	        myTTS.setOnUtteranceCompletedListener(this);
-	    }
+				
+	}
+
+
+	@Override
+	public void onDone(String utteranceId) {
+		// TODO Auto-generated method stub
+		Log.d("TTS", "onUtteranceFinished: utteranceId is "+utteranceId);
+		this.listener.onUtteranceFinished(utteranceId);
+	}
+
+
+	@Override
+	@Deprecated
+	public void onError(String utteranceId) {
+		// TODO Auto-generated method stub
 		
 	}
 
 
 	@Override
-	public void onUtteranceCompleted(String arg0) {
+	public void onStart(String utteranceId) {
 		// TODO Auto-generated method stub
-		this.listener.onUtterenceComplete(arg0);
+		
 	}
+ 
 	
-	public interface OnUtteranceCompletedListener
+	public interface UtteranceFinishedListener
 	{
-		public void onUtterenceComplete(String str);
+		public void onUtteranceFinished(String utteranceId);
 	}
+
+	
+	
+	
 
 }

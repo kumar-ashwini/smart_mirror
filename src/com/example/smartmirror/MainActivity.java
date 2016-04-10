@@ -29,9 +29,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -42,18 +40,16 @@ import android.provider.CalendarContract;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AnalogClock;
 import android.widget.DigitalClock;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ListeningActivity implements  CameraGestureSensor.Listener, ClickSensor.Listener,TTS.OnUtteranceCompletedListener{
+public class MainActivity extends ListeningActivity implements  CameraGestureSensor.Listener, ClickSensor.Listener,TTS.UtteranceFinishedListener{
 DigitalClock clock;
 TextView datetv;
 private String ACCESS_TOKEN="9a7d4f922b0f48c78d1dc3ed7dcfb39b";
@@ -154,7 +150,7 @@ private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         context = getApplicationContext(); 
         
   	  VoiceRecognitionListener.getInstance().setListener(this); 
-  	 tts=TTS.getInstance(context);
+  	 tts=TTS.getInstance(context,MainActivity.this);
   	  config = new AIConfiguration(ACCESS_TOKEN,AIConfiguration.SupportedLanguages.English,AIConfiguration.RecognitionEngine.System);
        aiDataService = new AIDataService(context, config);
         
@@ -387,7 +383,7 @@ private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
 	
 
 	@Override
-	protected void onStop() {
+	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onStop();
 		tts.shutdown();
@@ -466,14 +462,19 @@ private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
 			        }
 			    }
 			}.execute(aiRequest);
-		  restartListeningService();
+		 // restartListeningService();
 	}
+
+ 
+	
 
 
 	@Override
-	public void onUtterenceComplete(String str) {
+	public void onUtteranceFinished(String utteranceId) {
 		// TODO Auto-generated method stub
+		Log.d("Main Activity", "onUtteranceFinished");
 		startListening();
+		
 	}
 	
 	   
