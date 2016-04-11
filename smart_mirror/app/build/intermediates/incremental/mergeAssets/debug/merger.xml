@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/home/ashwini/AndroidStudioProjects/smart_mirror/app/src/main/assets"><file name="weather.ttf" path="/home/ashwini/AndroidStudioProjects/smart_mirror/app/src/main/assets/weather.ttf"/></source></dataSet><dataSet config="debug"><source path="/home/ashwini/AndroidStudioProjects/smart_mirror/app/src/debug/assets"/></dataSet></merger>

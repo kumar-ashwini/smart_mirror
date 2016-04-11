@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.smartmirror.MainActivity" 
+    android:background="#000000">
+
+    <AnalogClock
+        android:id="@+id/analogClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/weather_icon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/city_field"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        android:textSize="70sp"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/current_temperature_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/weather_icon1"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        android:textSize="20dp" 
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/details_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/current_temperature_field"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        android:textSize="20dp" 
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/calender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/details_field"
+        android:layout_marginTop="10dp"
+        android:text="No Event Today"
+        android:textColor="#ffffff"
+        android:textSize="30dp" 
+        />
+
+    <TextView
+        android:id="@+id/city_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="NEW DELHI,IN"
+        android:textColor="#ffffff"
+        android:textSize="20dp" 
+        android:layout_marginTop="7dp"/>
+
+</RelativeLayout>
+<!-- From: file:/home/ashwini/AndroidStudioProjects/smart_mirror/app/src/main/res/layout/activity_main.xml -->

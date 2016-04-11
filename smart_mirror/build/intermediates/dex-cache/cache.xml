@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/ashwini/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="/home/ashwini/AndroidStudioProjects/smart_mirror/app/build/intermediates/pre-dexed/debug/gson-2.3-adddb099df783f05a7d882d299b9784233df7610.jar" />
+    </item>
+    <item
+        jar="/home/ashwini/AndroidStudioProjects/smart_mirror/app/libs/backendless.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="eb2f47bb2f23cc52dba52acf189752b577a9c191">
+        <dex dex="/home/ashwini/AndroidStudioProjects/smart_mirror/app/build/intermediates/pre-dexed/debug/backendless-ea863c651e2e47ec8049508493a3f44fd2e0793a.jar" />
+    </item>
+    <item
+        jar="/home/ashwini/AndroidStudioProjects/smart_mirror/app/libs/ailib.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e97aacde52440785c83c77f2d997e0d633b0a627">
+        <dex dex="/home/ashwini/AndroidStudioProjects/smart_mirror/app/build/intermediates/pre-dexed/debug/ailib-198d197a50f5a8faa4bbfc52e08a8f5393a72923.jar" />
+    </item>
+    <item
+        jar="/home/ashwini/AndroidStudioProjects/smart_mirror/app/libs/opencv library - 2.4.9.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="67da07087ab056ce32de77971a1d731661c1d06a">
+        <dex dex="/home/ashwini/AndroidStudioProjects/smart_mirror/app/build/intermediates/pre-dexed/debug/opencv library - 2.4.9-f0f7c6de183da4be53a7b48c96a0f627fe27ac10.jar" />
+    </item>
+    <item
+        jar="/home/ashwini/AndroidStudioProjects/smart_mirror/app/libs/touchfreelibrary.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="46a7b36138442ed6fe87156dff2760b018efedbd">
+        <dex dex="/home/ashwini/AndroidStudioProjects/smart_mirror/app/build/intermediates/pre-dexed/debug/touchfreelibrary-225335f05dc6389d5046b6d4f7d7c5bad037ef45.jar" />
+    </item>
+    <item
+        jar="/home/ashwini/AndroidStudioProjects/smart_mirror/app/libs/commons-io-2.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/home/ashwini/AndroidStudioProjects/smart_mirror/app/build/intermediates/pre-dexed/debug/commons-io-2.4-9cd6c4ed7da3716a0144aaec3107e90d208c2a6f.jar" />
+    </item>
+
+</items>
